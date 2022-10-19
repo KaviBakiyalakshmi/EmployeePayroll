@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from './user';
 
 @Injectable({
@@ -9,31 +9,59 @@ import { User } from './user';
 export class UserService {
 
 
-  apiServerUrl = 'http://localhost:8080/user';
+  url = 'http://localhost:8080/user';
 
 
   constructor(private http: HttpClient){ }
+
+  postData(data:any){
+    return this.http.post<any>(this.url+"/add",data).pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  getData(){
+    return this.http.get<any>(this.url+"/all").pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  getDataById(id:number){
+    return this.http.get<any>(this.url+"/getid/"+id).pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  updateData(data:any,id:number){
+    return this.http.put<any>(this.url+"/"+id,data).pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+  deleteData(id :number){
+    return this.http.delete<any>(this.url+"/"+id).pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
 
   //  public getUser(): Observable<User[]>{
   //      return this.http.get<User[]>(`${this.apiServerUrl}/all`);
   //  }
 
   public getUserById(userid: number): Observable<User[]>{
-      return this.http.get<User[]>(`${this.apiServerUrl}/getid/${userid}`);
+      return this.http.get<User[]>(`${this.url}/getid/${userid}`);
   }
 
-  public addAadhars(aadhars: User): Observable<User>{
-      return this.http.post<User>(`${this.apiServerUrl}/add`, aadhars);
+  public adduser(user: User): Observable<User>{
+      return this.http.post<User>(`${this.url}/add`, user);
   }
 
-  public updateAadhars(aadhars: User): Observable<User>{
-      return this.http.put<User>(`${this.apiServerUrl}/update`, aadhars);
-  }
+  // public updateEmpoyee(user: User,employeeid:string): Observable<User>{
+  //     return this.http.put<User>(`${this.url}/update/${employeeid}`, user);
+  // }
 
-  public deleteAadhars(aadharid: number): Observable<void>{
-      return this.http.delete<void>(`${this.apiServerUrl}/delete/${aadharid}`);
-  }
-
-
+  // public deleteuser(userid: number): Observable<void>{
+  //     return this.http.delete<void>(`${this.url}/delete/${userid}`);
+  // }
 
 }

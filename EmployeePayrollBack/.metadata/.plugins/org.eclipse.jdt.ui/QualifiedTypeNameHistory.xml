@@ -37,4 +37,5 @@
     <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
     <fullyQualifiedTypeName name="javax.persistence.Query"/>
     <fullyQualifiedTypeName name="javax.persistence.PersistenceContext"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
 </qualifiedTypeNameHistroy>

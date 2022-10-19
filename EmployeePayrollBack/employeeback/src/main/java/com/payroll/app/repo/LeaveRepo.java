@@ -12,9 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.payroll.app.entities.Leaves;
 import com.payroll.app.entities.Salary;
 
-@Repository
-@Transactional
-@EnableJpaRepositories
+
 public interface LeaveRepo extends JpaRepository<Leaves, Long>{
 
     List<Leaves> findByEmployeeid(String employeeid);

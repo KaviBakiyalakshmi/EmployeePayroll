@@ -59,6 +59,47 @@ export class UserdashboardComponent implements OnInit {
 
 
 
+  onEdit(row : any)
+  {
+
+    
+     this.userObj.id=row.id;
+    this.userObj.employeeid=row.employeeid;
+    this.formValue.controls['name'].setValue(row.name);
+    this.formValue.controls['mobile'].setValue(row.mobile);
+    this.formValue.controls['email'].setValue(row.email);
+    this.formValue.controls['gender'].setValue(row.gender);
+    this.formValue.controls['dob'].setValue(row.dob);
+    this.formValue.controls['doj'].setValue(row.doj);
+    this.formValue.controls['password'].setValue(row.password);
+    this.formValue.controls['designation'].setValue(row.designation);
+  }
+
+  updateEmployeeDetails(){
+    this.userObj.name= this.formValue.value.name;
+    this.userObj.mobile= this.formValue.value.mobile;
+    this.userObj.email= this.formValue.value.email;
+    this.userObj.gender= this.formValue.value.gender;
+    this.userObj.dob= this.formValue.value.dob;
+    this.userObj.doj= this.formValue.value.doj;
+    this.userObj.password= this.formValue.value.password;
+    this.userObj.designation= this.formValue.value.designation;
+
+    this.userService.updateData(this.userObj,this.userObj.id).subscribe(data=> {
+      alert("Record Updated Successfully");
+      let cancel=document.getElementById("cancel1");
+      cancel?.click();
+      this.formValue.reset();
+      this.router.navigate(['/userdashboard']);
+      
+    })
+
+  }
+
+  
+
+
+
   logoutSession()
   {
     console.log("in funciton");

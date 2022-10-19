@@ -40,8 +40,8 @@ export class LeaveService {
    }
 
    //Admin leave status
-   updateLeave(employeeid:string,leaves:Leaves):Observable<any> {
-    return this.http.put(`${this.leaveUrl}/${employeeid}`,leaves);
+   updateLeave(id:number,leaves:Leaves):Observable<any> {
+    return this.http.put(`${this.leaveUrl}/${id}`,leaves);
    }
 
    //Delete Leave

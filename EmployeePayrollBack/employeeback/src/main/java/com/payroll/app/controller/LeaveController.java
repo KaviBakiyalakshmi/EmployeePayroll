@@ -61,9 +61,13 @@ public class LeaveController {
     
     
     
-    @PutMapping("/leave/{employeeid}")
-    public Leaves updateLeave(@RequestBody Leaves leave,@PathVariable String employeeid) {
-        return service.updateLeave(employeeid, leave);
+    @PutMapping("/leave/{id}")
+    public ResponseEntity<Object> update(@PathVariable Long id,@RequestBody Leaves ques){
+        Leaves data= service.update(id,ques);       
+        if(data!=null)
+            return new ResponseEntity<Object>(data,HttpStatus.OK);
+        else
+            return new ResponseEntity<Object>("Question is Not Available",HttpStatus.NOT_FOUND);
     }
     
     @DeleteMapping("/leave/{employeeid}")

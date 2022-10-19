@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminAttendanceComponent } from './admin-attendance/admin-attendance.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminEmployeeComponent } from './admin-employee/admin-employee.component';
 import { AdminLeaveComponent } from './admin-leave/admin-leave.component';
+import { AdminSalaryComponent } from './admin-salary/admin-salary.component';
 import { ApplyLeaveComponent } from './apply-leave/apply-leave.component';
 import { LeaveStatusComponent } from './leave-status/leave-status.component';
 import { LoginComponent } from './login/login.component';
@@ -21,7 +24,11 @@ const routes: Routes =
   {path: "salary", component:SalaryDashboardComponent},
   {path: "admindashboard", component:AdminDashboardComponent},
   {path: "adminleave", component:AdminLeaveComponent},
-  {path: "attendance", component:UserAttendanceComponent}
+  {path: "attendance", component:UserAttendanceComponent},
+  {path: "adminsalary", component:AdminSalaryComponent},
+  {path: "adminattendance", component: AdminAttendanceComponent},
+  {path: "adminemployee", component: AdminEmployeeComponent}
+
  
 ];
 

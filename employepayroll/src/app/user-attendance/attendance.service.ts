@@ -15,9 +15,9 @@ export class AttendanceService {
   getById: string;
 
   constructor(private http : HttpClient) {
-    this. addAtnURL = "http://localhost:8080/api/attendance";
+    this. addAtnURL = "http://localhost:8080/api/attendance/";
     this. getAtnURL = "http://localhost:8080/api/attendance/";
-    this. updateAtnUrl = "http://localhost:8080/api/attendance/";
+    this. updateAtnUrl = "http://localhost:8080/api/attendance";
     this. deleteAtnUrl="http://localhost:8080/api/attendance";
     this.getById = "http://localhost:8080/api/attendance/emp";
 
@@ -39,7 +39,7 @@ export class AttendanceService {
   
 
   updateAttendance(atn :Attendance) : Observable<Attendance>{
-    return this.http.put<Attendance>(this.updateAtnUrl, atn);
+    return this.http.put<Attendance>(this.updateAtnUrl+'/'+atn.id, atn);
   }
 
   deleteAttendance(atn : Attendance) : Observable<Attendance> {

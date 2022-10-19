@@ -13,7 +13,7 @@ export class AdminLeaveComponent implements OnInit {
   leaves: Leaves[];
   constructor(private service:LeaveService,private router:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { this.pending();
   }
   
   pending(){
@@ -29,16 +29,16 @@ export class AdminLeaveComponent implements OnInit {
   }
 
   leave: Leaves = new Leaves();
-  approve(employeeid:string){
+  approve(employeeid:string,id:number){
     this.leave.status="Approved";
-    this.service.updateLeave(employeeid,this.leave).subscribe(data=> {
+    this.service.updateLeave(id,this.leave).subscribe(data=> {
       this.pending();
     })
   }
 
-  reject(employeeid:string){
+  reject(employeeid:string,id:number){
     this.leave.status="Rejected";
-    this.service.updateLeave(employeeid,this.leave).subscribe(data=> {
+    this.service.updateLeave(id,this.leave).subscribe(data=> {
       this.pending();
     })
   }

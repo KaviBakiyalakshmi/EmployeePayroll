@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Salary } from './salary';
 import { SalaryService } from './salary.service';
@@ -11,8 +11,12 @@ import { SalaryService } from './salary.service';
 })
 export class SalaryDashboardComponent implements OnInit {
 
+  @ViewChild('content',{static:false }) el:ElementRef
+
   public salaryInfo:Salary[];
+  
   edata:String;
+
   constructor(private http: HttpClient, private salaryService:SalaryService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,7 +29,7 @@ export class SalaryDashboardComponent implements OnInit {
   }
 
   getInfo(employeeid:String):void{
-    this.salaryService.getAllInfo(employeeid).subscribe(
+    this.salaryService.getInfoByEmpId(employeeid).subscribe(
       (res:Salary[])=>{
       this.salaryInfo=res;
     },
@@ -37,5 +41,19 @@ export class SalaryDashboardComponent implements OnInit {
     );
   }
 
+  //  makePdf(){
+  //   let pdf= new jsPDF('p','pt','a4');
+  //   /*
+  //   pdf.html(this.el.nativeElement,{
+  //     callback:(pdf)=>{
+  //       pdf.save("SalarySlip.pdf")
+  //     }
+  //   })*/
+  //   autoTable(pdf,{html:'#content'})
+  //   pdf.save('table.pdf')
+  //  }
+
 
 }
+
+

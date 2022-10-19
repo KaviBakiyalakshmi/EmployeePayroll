@@ -13,6 +13,10 @@ import { SalaryDashboardComponent } from './salary-dashboard/salary-dashboard.co
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminLeaveComponent } from './admin-leave/admin-leave.component';
 import { UserAttendanceComponent } from './user-attendance/user-attendance.component';
+import { AdminAttendanceComponent } from './admin-attendance/admin-attendance.component';
+import { AdminEmployeeComponent } from './admin-employee/admin-employee.component';
+import { AdminSalaryComponent } from './admin-salary/admin-salary.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { UserAttendanceComponent } from './user-attendance/user-attendance.compo
     SalaryDashboardComponent,
     AdminDashboardComponent,
     AdminLeaveComponent,
-    UserAttendanceComponent
+    UserAttendanceComponent,
+    AdminAttendanceComponent,
+    AdminEmployeeComponent,
+    AdminSalaryComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

@@ -46,12 +46,19 @@ public class LeaveService {
          
     }
     
-    public Leaves updateLeave(String employeeid,Leaves newLeave) {
-        
-            Leaves oldLeave = (Leaves) repo.findByEmployeeid(employeeid);
-            oldLeave.setStatus(newLeave.getStatus());
-            return repo.save(oldLeave);
-       
+    public int updateLeave(String employeeid,Long id,Leaves newLeave) {  
+        Query query = em.createQuery("update Leaves set status = '"+newLeave.getStatus()+"' where id= "+id+" and employeeid= "+employeeid);
+        return query.executeUpdate();
+    }
+    
+    public Leaves update(Long id,Leaves newLeave) {
+        if(repo.findById(id).isPresent())
+        {
+            Leaves old = repo.findById(id).get();
+            old.setStatus(newLeave.getStatus());
+            return repo.save(old);
+        } else
+            return null;
     }
     
     public boolean deleteLeave(String employeeid) {
